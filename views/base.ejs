@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>test</title>
+        <link rel="stylesheet" href="/views/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    </head>
+    <body>
+    <script>
+        var rules = {};
+            <% for(var val in rules){ %>
+            rules["<%= val %>"] = "<%= rules[val] %>";
+            <% } %>
+
+        var events = {};
+            <% for(val in events){ %>
+            events["<%= val %>"] = [];
+                <% for(key in events[val]){ %>
+                events["<%= val %>"].push("<%= events[val][key] %>");
+                <% } %>
+            <% } %>
+
+        var init = "<%= init %>";
+        var query = "<%= query %>";
+        var nb_elem = <%= elem.length %>;
+
+        var limit = nb_elem * nb_elem * nb_elem;
+        query = query.split('');
+    </script>
+
+    <% for(val = 0; val < elem.length; val++){ %>
+        <div id="<%= elem[val]; %>" class='<%= def_stat %>'><%= elem[val]; %></div>
+    <% } %>
+
+    <script src="/views/operation.js"></script>
+    <script src="/views/solver.js"></script>
+    <script src="/views/update.js"></script>
+    <script src="/views/initView.js"></script>
+    </body>
+</html>
